@@ -1,42 +1,50 @@
-import {features, stats} from '../constants';
+import { features, stats } from '../constants';
 import styles, { layout } from '../style';
 import Button from './Button';
 
- const Business = () => {
+const FeatureCard = ({icon, title, content, index}) => (
+  <div className={`flex flex-row p-6 rounded-[20px] feature-card ${index !== features.length - 1 ? 
+  'mb-6' : 'mb-0'} `}>
+    <div className={`w-[64px] h-[64px] rounded-full ${styles.flexCenter} bg-dimBlue`}>
+      <img src={icon} alt='icon' className='w-[50%] h-[50%] object-contain' />
+    </div>
+    <div className='flex-1 flex flex-col ml-3'>
+      <h4 className='font-poppins font-semibold text-white text-[18px] leading-[23px] m-1'>
+        {title}
+      </h4>
+      <p className='font-poppins  text-dimWhite text-[16px] leading-[24px] m-1'>
+        {content}
+      </p>
+    </div>
+  </div>
+);
+ 
+const Business = () => {
   return (
-    <div className='flex flex-center flex-row'>
-      <div className='flex flex-col'>
-        <h1 className='font-poppins font-semibold xs:text-[40px] text-[30px] xs:leading-[53px] leading-[43px] mt-20 text-white'>
-          You do the business, we'll handle the money
-        </h1>
+    <section className='flex flex-center flex-row'>
+      <div className={layout.sectionInfo}>
+        <h2 className={styles.heading2}>
+          You do the business, < br className='sm:block hidden' /> we'll handle the money
+        </h2>
         <p className={`${styles.paragraph} mt-5 max-w-[470px]`}>
           With the right credit card, you can improve your financial life by building
-          credit, earning rewards and saving money. But with hundreds of credit on the 
+          credit, earning rewards and saving money. But with hundreds of credit on the
           market.
         </p>
+
+        <Button styles='mt-10' />
       </div>
 
       {/* cards*/}
-      <div className='flex flex-col'>
-        <section className='flex-row flex-wrap sm:mb-20 mb-6'>
-          {features.map((feature) => (
-            <div key={feature.id} className={`flex-1 flex justify-start items-center flex-row`}>
-              <div className='w-[64px] h-[64px] mt-1148 ml-855'> {feature.icon}</div>
-              <div className='flex flex-col'>
-                <h1 className='font-poppins font-semibold xs:text-[18px] text-[15px] xs:leading-[53px] leading-[43px] text-white'>
-                  {feature.title}
-                </h1>
-                <p className={`${styles.paragraph} mt-5 max-w-[470px]`}>
-                  {feature.content}
-                </p>
-              </div>
-            </div>
-          ))}
-        </section> 
+      <div className={`${layout.sectionImg} flex-col`}>
+        {features.map((feature, index) => (
+          <FeatureCard  key={feature.id} {...feature} index={index} />
+        ))}
 
       </div>
-    </div>
+    </section>
   )
 }
 
-export default Business
+export default Business;
+
