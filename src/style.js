@@ -13,6 +13,19 @@ const styles = {
   
     marginX: "sm:mx-16 mx-6",
     marginY: "sm:my-16 my-6",
+
+    logo: {
+      transition: 'transform 0.2s ease-in-out', // add a smooth transition
+    },
+    logoHover: {
+      transform: 'translateY(-5px)', // move the image up a bit
+    },
+    text: {
+      transition: 'color 0.2s ease-in-out', // add a smooth color transition
+    },
+    textHover: {
+      color: '#ff0000', // change the color of the text
+    },
   };
   
   export const layout = {
