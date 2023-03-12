@@ -138,6 +138,8 @@
   background: rgba(255, 255, 255, 0.6);
   filter: blur(750px);
 }
+
+/* animations */
 .logo{
   transition: transform 0.2s ease-in-out;
 }
@@ -146,5 +148,39 @@
   transform: translateY(-10px);
   filter: brightness(0) saturate(100%) invert(100%) sepia(100%) saturate(500%) hue-rotate(100deg);
   transition: transform 0.2s ease-in-out;
+}
+
+.slide-in-right {
+  animation: slide-in-right 0.5s ease-out forwards;
+  opacity: 0;
+  transform: translateX(100%);
+}
+
+@keyframes slide-in-right {
+  from {
+    opacity: 0;
+    transform: translateX(100%);
   }
+  to {
+    opacity: 1;
+    transform: translateX(0%);
+  }
+}
+.slide-in-left {
+  animation: slide-in-left 0.5s ease-out forwards;
+  opacity: 0;
+  transform: translateX(-100%);
+}
+
+@keyframes slide-in-left {
+  from {
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0%);
+  }
+}
+
 
